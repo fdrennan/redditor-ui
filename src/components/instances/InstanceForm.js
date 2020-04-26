@@ -4,14 +4,12 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "../../Theme";
-import Box from "@material-ui/core/Box";
-
+import Grid from "@material-ui/core/Grid";
 const InstanceForm = () => {
   const classes = useStyles();
   const instanceContext = useContext(InstanceContext);
 
   const {
-    addInstance,
     updateInstance,
     clearCurrentInstance,
     instance,
@@ -48,7 +46,6 @@ const InstanceForm = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (instance === null) {
-      addInstance(currentInstance);
       getInstances();
     } else {
       updateInstance(currentInstance);
@@ -61,7 +58,7 @@ const InstanceForm = () => {
   };
 
   return (
-    <Box m={2} p={2} border={1} borderRadius={16}>
+    <Grid  m={0} p={2} border={1} borderRadius={0}>
       <form className={classes.form} onSubmit={onSubmit}>
         <div>
           <Typography>
@@ -120,7 +117,7 @@ const InstanceForm = () => {
           )}
         </div>
       </form>
-    </Box>
+    </Grid>
   );
 };
 
