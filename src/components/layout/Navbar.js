@@ -84,7 +84,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const authContext = useContext(AuthContext);
 
-  const { isAuthenticated, logout, loadUser } = authContext;
+  const { logout, loadUser } = authContext; //   const { isAuthenticated, logout, loadUser } = authContext;
 
   const handleDrawerOpen = () => {
     setOpen(true);

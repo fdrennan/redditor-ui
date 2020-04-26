@@ -1,34 +1,30 @@
 import React, { useContext, useEffect } from "react";
-
 import Spinner from "../layout/Spinner";
 import InstanceContext from "../../context/instance/instanceContext";
-import SecurityGroupContext from "../../context/securitygroup/securityGroupContext";
-import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "../../Theme";
+import Paper from "@material-ui/core/Paper";
+
 
 
 const Instance = () => {
   const classes = useStyles();
 
   const instanceContext = useContext(InstanceContext);
-  const securityGroupContext = useContext(SecurityGroupContext);
+
   const { instances, getInstances, loading } = instanceContext;
-  const { createKeyFile } = securityGroupContext;
+
 
   useEffect(() => {
-    getInstances();
-    createKeyFile("ndexr");
+    getInstances({instances});
+
     // eslint-disable-next-line
   }, []);
 
   if (instances !== null && instances.length === 0 && !loading) {
     return <h4>Please add a contact</h4>;
   }
-
-  const refreshInstances = () => {
-    getInstances();
-  };
 
   if (instances === "false") {
     return (
@@ -40,36 +36,38 @@ const Instance = () => {
 
   return (
     <div>
-      <Button
-        fullWidth
-        variant="contained"
-        color="primary"
-        className={classes.submit}
-        onClick={refreshInstances}
-      >
-        Refresh
-      </Button>
-      <div>
-        <br />
-      </div>
-
       <div>
         {instances !== null && !loading ? (
-            <div>
+            <Grid container component="main" className={classes.root}>
                 {
                     JSON.parse(instances).map(data => {
-                        const row = {data};
-                        console.log(row)
-                        return <div key={`${row.data['created_utc']}-${row.data['author']}`}>
-                            <strong>Title:</strong> {row.data['title']}
-                            <br/><br/>
-                        </div>
+                        console.log(data)
+                        const {author, title, url, subreddit, created_utc, thumbnail, selftext} = data;
+                        return <Grid xs={4} >
+                          <hr/>
+                            <div>
+                              <strong>Author:</strong> <a href={`http://reddit.com/u/${author}`} target="_blank">{author}</a>
+                              <br/>
+                              <strong>Title:</strong> {title}
+                              <br/>
+                              <strong>Created:</strong> {created_utc}
+                              <br/>
+                              <strong>url:</strong> <a href={url} target="_blank">{title}</a>
+                              <br/>
+                              <strong>Subreddit:</strong> <a href={`http://reddit.com/r/${subreddit}`} target="_blank">{subreddit}</a>
+                              <br/>
+                              <strong>Selftext:</strong> {selftext}
+                            </div>
+                          <div >
+                              <a href={url} target="_blank">
+                                <img src={url} alt='' />
+                              </a>
+                          </div>
+
+                        </Grid>
                     })
                 }
-            </div>
-            // JSON.parse(instances).map(x => <div>x</div>)
-
-            // {console.log(instances)}
+            </Grid>
         ) : (
           <Spinner />
         )}

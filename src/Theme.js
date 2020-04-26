@@ -6,7 +6,8 @@ const useStyles = makeStyles(theme => ({
   },
   image: {
     backgroundImage:
-      "url(https://images.unsplash.com/photo-1571764592091-e852a14c8ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3034&q=80)",
+      // "url(https://images.unsplash.com/photo-1571764592091-e852a14c8ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3034&q=80)",
+    "url(http://ndexr.com:8000/get_stocks)",
     backgroundRepeat: "no-repeat",
     backgroundColor:
       theme.palette.type === "dark"

@@ -19,6 +19,8 @@ const R_HOST = "http://ndexr.com";
 const R_PORT = 8000;
 const InstanceState = props => {
   const initialState = {
+    key: null,
+    limit: null,
     instances: null,
     instance: null,
     filtered: null,
@@ -28,20 +30,25 @@ const InstanceState = props => {
   const [state, dispatch] = useReducer(instanceReducer, initialState);
 
   // Get Instance
-  const getInstances = async () => {
+  const getInstances = async instance => {
     console.log("GET INSTANCES");
+
+      const {key, limit} = instance;
+
+
     dispatch({
       type: SET_LOADING,
       payload: true
     });
-    console.log(`${R_HOST}:${R_PORT}/instance_data`);
+
     try {
       const res = await axios.get(`${R_HOST}:${R_PORT}/find_posts`, {
         headers: {
           "Content-Type": "application/json"
         },
         params: {
-          user_token: localStorage.token
+          key: key,
+          limit: limit
         }
       });
 
@@ -52,6 +59,7 @@ const InstanceState = props => {
         type: GET_INSTANCES,
         payload: data
       });
+
     } catch (err) {
       console.error(err);
       console.log("getInstances");
@@ -63,24 +71,17 @@ const InstanceState = props => {
     console.log("ADD INSTANCES");
     try {
       const {
-        instanceType,
-        pemKey,
-        instanceStorage,
-        imageId,
-        securityGroupName
+        key,
+        limit
       } = instance;
       console.log(`${R_HOST}:${R_PORT}/create_instance`);
-      await axios.get(`${R_HOST}:${R_PORT}/create_instance`, {
+      await axios.get(`${R_HOST}:${R_PORT}/find_posts`, {
         headers: {
           "Content-Type": "application/json"
         },
         params: {
-          instance_type: instanceType,
-          key_name: pemKey,
-          instance_storage: instanceStorage,
-          image_id: imageId,
-          user_token: localStorage.token,
-          security_group_name: securityGroupName
+          key: key,
+          limit: limit
         }
       });
     } catch (err) {

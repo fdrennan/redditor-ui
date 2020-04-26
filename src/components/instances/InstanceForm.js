@@ -10,7 +10,6 @@ const InstanceForm = () => {
   const instanceContext = useContext(InstanceContext);
 
   const {
-    updateInstance,
     clearCurrentInstance,
     instance,
     getInstances
@@ -18,14 +17,10 @@ const InstanceForm = () => {
 
   useEffect(() => {
     if (instance !== null) {
-      setInstance(instance);
+      getInstances(instance);
     } else {
       setInstance({
-        key: "covid",
-        limit: "100",
-
-
-
+        ...currentInstance
       });
     }
   }, [instanceContext, instance]);
@@ -46,9 +41,9 @@ const InstanceForm = () => {
   const onSubmit = e => {
     e.preventDefault();
     if (instance === null) {
-      getInstances();
+      getInstances(currentInstance);
     } else {
-      updateInstance(currentInstance);
+      getInstances(currentInstance);
     }
     clearAll();
   };
@@ -94,8 +89,6 @@ const InstanceForm = () => {
             onChange={onChange}
           />
 
-
-
           <Button
             type="submit"
             fullWidth
@@ -110,11 +103,6 @@ const InstanceForm = () => {
         </div>
 
         <div>
-          {instance && (
-            <div>
-              <button onClick={clearAll}>Clear</button>
-            </div>
-          )}
         </div>
       </form>
     </Grid>
