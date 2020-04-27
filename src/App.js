@@ -26,16 +26,17 @@ const App = () => {
                 <div className="container">
                   <Alerts />
                   <Switch>
-                    <PrivateRoute exact path="/" component={CreateInstance} />
-                    <PrivateRoute
-                      exact
-                      path="/security"
-                      component={SecurityGroup}
-                    />
-                    <Route exact path="/scratch" component={Scratch} />
-                    <Route exact path="/about" component={About} />
-                    <Route exact path="/register" component={Register} />
-                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/" component={CreateInstance} />
+                    {/*<PrivateRoute exact path="/" component={CreateInstance} />*/}
+                    {/*<PrivateRoute*/}
+                    {/*  exact*/}
+                    {/*  path="/security"*/}
+                    {/*  component={SecurityGroup}*/}
+                    {/*/>*/}
+                    {/*<Route exact path="/scratch" component={Scratch} />*/}
+                    {/*<Route exact path="/about" component={About} />*/}
+                    {/*<Route exact path="/register" component={Register} />*/}
+                    {/*<Route exact path="/login" component={Login} />*/}
                   </Switch>
                 </div>
               </Router>

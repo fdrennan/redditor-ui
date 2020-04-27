@@ -4,7 +4,8 @@ import InstanceContext from "../../context/instance/instanceContext";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "../../Theme";
-import Paper from "@material-ui/core/Paper";
+import Box from "@material-ui/core/Box";
+import {Container} from "semantic-ui-react";
 
 
 
@@ -36,14 +37,19 @@ const Instance = () => {
 
   return (
     <div>
-      <div>
+      {/*<Box width={1/4}>*/}
+      {/*  <a href={'http://ndexr.com:8000/comment_plot?limit=100000'} target="_blank">*/}
+      {/*    <img src={'http://ndexr.com:8000/comment_plot?limit=100000'} alt='' />*/}
+      {/*  </a>*/}
+      {/*</Box>*/}
+      {/*<div>*/}
         {instances !== null && !loading ? (
-            <Grid container component="main" className={classes.root}>
+            <Box container component="main" className={classes.root}>
                 {
                     JSON.parse(instances).map(data => {
                         console.log(data)
                         const {author, title, url, subreddit, created_utc, thumbnail, selftext} = data;
-                        return <Grid xs={4} >
+                        return <Container xs={3} >
                           <hr/>
                             <div>
                               <strong>Author:</strong> <a href={`http://reddit.com/u/${author}`} target="_blank">{author}</a>
@@ -58,20 +64,20 @@ const Instance = () => {
                               <br/>
                               <strong>Selftext:</strong> {selftext}
                             </div>
-                          <div >
+                          <Grid xs={1}>
                               <a href={url} target="_blank">
                                 <img src={url} alt='' />
                               </a>
-                          </div>
+                          </Grid>
 
-                        </Grid>
+                        </Container>
                     })
                 }
-            </Grid>
+            </Box>
         ) : (
           <Spinner />
         )}
-      </div>
+
     </div>
   );
 };
