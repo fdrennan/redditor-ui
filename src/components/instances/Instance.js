@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import useStyles from "../../Theme";
 import Box from "@material-ui/core/Box";
 import {Container} from "semantic-ui-react";
+import Paper from '@material-ui/core/Paper';
+
 
 
 
@@ -36,41 +38,43 @@ const Instance = () => {
   }
 
   return (
-    <div>
-      {/*<Box width={1/4}>*/}
-      {/*  <a href={'http://ndexr.com:8000/comment_plot?limit=100000'} target="_blank">*/}
-      {/*    <img src={'http://ndexr.com:8000/comment_plot?limit=100000'} alt='' />*/}
-      {/*  </a>*/}
-      {/*</Box>*/}
-      {/*<div>*/}
+    <Grid   m={2} component="main" >
         {instances !== null && !loading ? (
-            <Box container component="main" className={classes.root}>
+            <Box>
                 {
                     JSON.parse(instances).map(data => {
                         console.log(data)
-                        const {author, title, url, subreddit, created_utc, thumbnail, selftext} = data;
-                        return <Container xs={3} >
-                          <hr/>
-                            <div>
-                              <strong>Author:</strong> <a href={`http://reddit.com/u/${author}`} target="_blank">{author}</a>
-                              <br/>
-                              <strong>Title:</strong> {title}
-                              <br/>
-                              <strong>Created:</strong> {created_utc}
-                              <br/>
-                              <strong>url:</strong> <a href={url} target="_blank">{title}</a>
-                              <br/>
-                              <strong>Subreddit:</strong> <a href={`http://reddit.com/r/${subreddit}`} target="_blank">{subreddit}</a>
-                              <br/>
-                              <strong>Selftext:</strong> {selftext}
-                            </div>
-                          <Grid xs={1}>
-                              <a href={url} target="_blank">
-                                <img src={url} alt='' />
-                              </a>
-                          </Grid>
+                        const {author, title, url, subreddit, thumbnail,  created_utc, selftext} = data;
+                        return (
+                            <Box m={2}>
 
-                        </Container>
+                              <Grid
+                                  container
+                                  direction="row"
+                                  justify="space-between"
+                                  alignItems="flex-start"
+                              >
+                                <Box>
+                                  <strong>Author:</strong> <a href={`http://reddit.com/u/${author}`} target="_blank">{author}</a>
+                                  <br/>
+                                  <strong>Title:</strong> {title}
+                                  <br/>
+                                  <strong>Created:</strong> {created_utc}
+                                  <br/>
+                                  <strong>url:</strong> <a href={url} target="_blank">{title}</a>
+                                  <br/>
+                                  <strong>Subreddit:</strong> <a href={`http://reddit.com/r/${subreddit}`} target="_blank">{subreddit}</a>
+                                  <br/>
+                                  <strong>Selftext:</strong> {selftext && `${selftext.toString().slice(0, 500)}.......`}
+                                </Box>
+
+                                <a href={url} target="_blank">
+                                  <img src={thumbnail} alt='' />
+                                </a>
+                              </Grid>
+                            </Box>
+
+                        )
                     })
                 }
             </Box>
@@ -78,7 +82,7 @@ const Instance = () => {
           <Spinner />
         )}
 
-    </div>
+    </Grid>
   );
 };
 

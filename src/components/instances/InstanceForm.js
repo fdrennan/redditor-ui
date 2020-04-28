@@ -54,7 +54,9 @@ const InstanceForm = () => {
 
   return (
     <Grid  m={0} p={2} border={1} borderRadius={0}>
-      <form className={classes.form} onSubmit={onSubmit}>
+      <form
+          className={classes.form}
+          onSubmit={onSubmit}>
         <div>
           <Typography>
             <h1>Search Reddit</h1>
@@ -102,8 +104,6 @@ const InstanceForm = () => {
           </Button>
         </div>
 
-        <div>
-        </div>
       </form>
     </Grid>
   );
