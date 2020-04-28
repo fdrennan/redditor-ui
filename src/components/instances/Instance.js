@@ -3,24 +3,15 @@ import Spinner from "../layout/Spinner";
 import InstanceContext from "../../context/instance/instanceContext";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import useStyles from "../../Theme";
 import Box from "@material-ui/core/Box";
-import {Container} from "semantic-ui-react";
-import Paper from '@material-ui/core/Paper';
-
-
-
 
 const Instance = () => {
-  const classes = useStyles();
-
   const instanceContext = useContext(InstanceContext);
 
   const { instances, getInstances, loading } = instanceContext;
 
-
   useEffect(() => {
-    getInstances({instances});
+    getInstances({ instances });
 
     // eslint-disable-next-line
   }, []);
@@ -38,54 +29,78 @@ const Instance = () => {
   }
 
   return (
-    <Box   m={2} component="main" >
-        {instances !== null && !loading ? (
-            <Grid container>
-                {
-                    JSON.parse(instances).map(data => {
-                        console.log(data)
-                        const {author, title, url, subreddit, thumbnail,  created_utc, selftext} = data;
-                        return (
-                            <Grid xs={6}
-                                  direction="row"
-                                  justify="space-between"
-                                  alignItems="flex-start">
-                              <Box m={1} border={1} padding={2}>
-                                <Grid
-                                    container
-                                    direction="row"
-                                    justify="space-between"
-                                    alignItems="flex-start"
-                                >
-                                  <Box>
-                                    <strong>Author:</strong> <a href={`http://reddit.com/u/${author}`} target="_blank">{author}</a>
-                                    <br/>
-                                    <strong>Title:</strong> {title}
-                                    <br/>
-                                    <strong>Created:</strong> {created_utc}
-                                    <br/>
-                                    <strong>url:</strong> <a href={url} target="_blank">{title}</a>
-                                    <br/>
-                                    <strong>Subreddit:</strong> <a href={`http://reddit.com/r/${subreddit}`} target="_blank">{subreddit}</a>
-                                    <br/>
-                                    <strong>Selftext:</strong> {selftext && `${selftext.toString().slice(0, 500)}.......`}
-                                  </Box>
+    <Box m={2} component="main">
+      {instances !== null && !loading ? (
+        <Grid container>
+          {JSON.parse(instances).map(data => {
+            const {
+              author,
+              title,
+              url,
+              subreddit,
+              thumbnail,
+              created_utc,
+              selftext
+            } = data;
+            return (
+              <Grid
+                xs={6}
+                direction="row"
+                justify="space-between"
+                alignItems="flex-start"
+              >
+                <Box m={1} border={1} padding={2}>
+                  <Grid
+                    container
+                    direction="row"
+                    justify="space-between"
+                    alignItems="flex-start"
+                  >
+                    <Box>
+                      <strong>Author:</strong>{" "}
+                      <a
+                        href={`http://reddit.com/u/${author}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {author}
+                      </a>
+                      <br />
+                      <strong>Title:</strong> {title}
+                      <br />
+                      <strong>Created:</strong> {created_utc}
+                      <br />
+                      <strong>url:</strong>{" "}
+                      <a href={url} target="_blank" rel="noopener noreferrer">
+                        {title}
+                      </a>
+                      <br />
+                      <strong>Subreddit:</strong>{" "}
+                      <a
+                        href={`http://reddit.com/r/${subreddit}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {subreddit}
+                      </a>
+                      <br />
+                      <strong>Selftext:</strong>{" "}
+                      {selftext &&
+                        `${selftext.toString().slice(0, 500)}.......`}
+                    </Box>
 
-                                  <a href={url} target="_blank">
-                                    <img src={thumbnail} alt='' />
-                                  </a>
-                                </Grid>
-                              </Box>
-                            </Grid>
-
-                        )
-                    })
-                }
-            </Grid>
-        ) : (
-          <Spinner />
-        )}
-
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                      <img src={thumbnail} alt="" />
+                    </a>
+                  </Grid>
+                </Box>
+              </Grid>
+            );
+          })}
+        </Grid>
+      ) : (
+        <Spinner />
+      )}
     </Box>
   );
 };

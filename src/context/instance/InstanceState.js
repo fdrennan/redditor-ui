@@ -20,7 +20,7 @@ const R_PORT = 8000;
 const InstanceState = props => {
   const initialState = {
     key: null,
-    limit: null,
+    limit: 5,
     instances: null,
     instance: null,
     filtered: null,
@@ -33,8 +33,7 @@ const InstanceState = props => {
   const getInstances = async instance => {
     console.log("GET INSTANCES");
 
-      const {key, limit} = instance;
-
+    const { key, limit } = instance;
 
     dispatch({
       type: SET_LOADING,
@@ -52,14 +51,12 @@ const InstanceState = props => {
         }
       });
 
-
       const { data } = res.data;
 
       dispatch({
         type: GET_INSTANCES,
         payload: data
       });
-
     } catch (err) {
       console.error(err);
       console.log("getInstances");
@@ -70,10 +67,7 @@ const InstanceState = props => {
   const addInstance = async instance => {
     console.log("ADD INSTANCES");
     try {
-      const {
-        key,
-        limit
-      } = instance;
+      const { key, limit } = instance;
       console.log(`${R_HOST}:${R_PORT}/create_instance`);
       await axios.get(`${R_HOST}:${R_PORT}/find_posts`, {
         headers: {
