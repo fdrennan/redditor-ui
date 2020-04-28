@@ -105,13 +105,13 @@ const Navbar = () => {
 
   const buildServer = props => (
     <Link to="/" {...props}>
-      Build Server
+      Search Posts
     </Link>
   );
 
   const securityLink = props => (
     <Link to="/security" {...props}>
-      Security
+      Dashboard
     </Link>
   );
 

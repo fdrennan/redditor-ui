@@ -30,7 +30,7 @@ const InstanceForm = () => {
 
   const [currentInstance, setInstance] = useState({
     key: "covid",
-    limit: "100"
+    limit: "5"
   });
 
   const {

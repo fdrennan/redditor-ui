@@ -38,51 +38,55 @@ const Instance = () => {
   }
 
   return (
-    <Grid   m={2} component="main" >
+    <Box   m={2} component="main" >
         {instances !== null && !loading ? (
-            <Box>
+            <Grid container>
                 {
                     JSON.parse(instances).map(data => {
                         console.log(data)
                         const {author, title, url, subreddit, thumbnail,  created_utc, selftext} = data;
                         return (
-                            <Box m={2}>
-
-                              <Grid
-                                  container
+                            <Grid xs={6}
                                   direction="row"
                                   justify="space-between"
-                                  alignItems="flex-start"
-                              >
-                                <Box>
-                                  <strong>Author:</strong> <a href={`http://reddit.com/u/${author}`} target="_blank">{author}</a>
-                                  <br/>
-                                  <strong>Title:</strong> {title}
-                                  <br/>
-                                  <strong>Created:</strong> {created_utc}
-                                  <br/>
-                                  <strong>url:</strong> <a href={url} target="_blank">{title}</a>
-                                  <br/>
-                                  <strong>Subreddit:</strong> <a href={`http://reddit.com/r/${subreddit}`} target="_blank">{subreddit}</a>
-                                  <br/>
-                                  <strong>Selftext:</strong> {selftext && `${selftext.toString().slice(0, 500)}.......`}
-                                </Box>
+                                  alignItems="flex-start">
+                              <Box m={1} border={1} padding={2}>
+                                <Grid
+                                    container
+                                    direction="row"
+                                    justify="space-between"
+                                    alignItems="flex-start"
+                                >
+                                  <Box>
+                                    <strong>Author:</strong> <a href={`http://reddit.com/u/${author}`} target="_blank">{author}</a>
+                                    <br/>
+                                    <strong>Title:</strong> {title}
+                                    <br/>
+                                    <strong>Created:</strong> {created_utc}
+                                    <br/>
+                                    <strong>url:</strong> <a href={url} target="_blank">{title}</a>
+                                    <br/>
+                                    <strong>Subreddit:</strong> <a href={`http://reddit.com/r/${subreddit}`} target="_blank">{subreddit}</a>
+                                    <br/>
+                                    <strong>Selftext:</strong> {selftext && `${selftext.toString().slice(0, 500)}.......`}
+                                  </Box>
 
-                                <a href={url} target="_blank">
-                                  <img src={thumbnail} alt='' />
-                                </a>
-                              </Grid>
-                            </Box>
+                                  <a href={url} target="_blank">
+                                    <img src={thumbnail} alt='' />
+                                  </a>
+                                </Grid>
+                              </Box>
+                            </Grid>
 
                         )
                     })
                 }
-            </Box>
+            </Grid>
         ) : (
           <Spinner />
         )}
 
-    </Grid>
+    </Box>
   );
 };
 
