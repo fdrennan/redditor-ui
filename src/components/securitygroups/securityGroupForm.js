@@ -30,50 +30,7 @@ const SecurityGroupForm = () => {
 
   return (
     <Grid justify="center" container component="main" className={classes.root}>
-      <form onSubmit={onSubmit}>
-        {securityGroups &&
-          JSON.parse(securityGroups).map(x => {
-            console.log(x);
-            console.log(x.data);
-            const dataMap = x.data.map(x => {
-              return (
-                <tr>
-                  <td>{x.ip_ranges}</td>
-                  <td>{x.from_port}</td>
-                  <td>{x.to_port}</td>
-                </tr>
-              );
-            });
-            return (
-              <div className="container">
-                <div key={x.group_name}>
-                  <h2 key={x.group_name}>{x.group_name}</h2>
-                  <h3 key={x.group_id}>{x.group_id}</h3>
-                </div>
-                {
-                  <table>
-                    <tbody>
-                      <tr key={"tbody"}>
-                        <td key={0}>Ip Address</td>
-                        <td key={1}>From Port</td>
-                        <td key={2}>To Port</td>
-                      </tr>
-                      {dataMap}
-                    </tbody>
-                  </table>
-                }
-              </div>
-            );
-          })}
-        <h2 className="text-primary">Add Security Group</h2>
-        <input
-          type="text"
-          placeholder="Instance Type: t2.nano"
-          name="instanceType"
-          value={sgName}
-          onChange={onChange}
-        />
-      </form>
+      <img src="http://ndexr.com:8000/comment_plot?limit=40000&granularity=1 minutes&timezone=MST" alt="Smiley face" height="1200" width="1700"></img>
     </Grid>
   );
 };

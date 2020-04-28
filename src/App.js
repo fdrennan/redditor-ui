@@ -28,11 +28,11 @@ const App = () => {
                   <Switch>
                     <Route exact path="/" component={CreateInstance} />
                     {/*<PrivateRoute exact path="/" component={CreateInstance} />*/}
-                    {/*<PrivateRoute*/}
-                    {/*  exact*/}
-                    {/*  path="/security"*/}
-                    {/*  component={SecurityGroup}*/}
-                    {/*/>*/}
+                    <Route
+                      exact
+                      path="/security"
+                      component={SecurityGroup}
+                    />
                     {/*<Route exact path="/scratch" component={Scratch} />*/}
                     {/*<Route exact path="/about" component={About} />*/}
                     {/*<Route exact path="/register" component={Register} />*/}

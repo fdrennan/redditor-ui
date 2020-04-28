@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import useStyles from "../../Theme";
 import Grid from "@material-ui/core/Grid";
+import CardMedia from "@material-ui/core/CardMedia";
 const InstanceForm = () => {
   const classes = useStyles();
 
