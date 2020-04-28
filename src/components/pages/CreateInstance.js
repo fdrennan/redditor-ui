@@ -5,21 +5,24 @@ import Navbar from "../layout/Navbar";
 import useStyles from "../../Theme";
 
 import Grid from "@material-ui/core/Grid";
-import CardMedia from "@material-ui/core/CardMedia";
 
 const CreateInstance = () => {
   const classes = useStyles();
   return (
     <div>
       <Navbar />
-      <Grid item xs={12} sm={12} md={12}
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={12}
         justify="center"
         container
         component="main"
         className={classes.root}
       >
-          <InstanceForm />
-          <Instance />
+        <InstanceForm />
+        <Instance />
       </Grid>
     </div>
   );

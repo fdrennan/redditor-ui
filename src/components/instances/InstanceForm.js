@@ -6,17 +6,17 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import useStyles from "../../Theme";
 import Grid from "@material-ui/core/Grid";
-import CardMedia from "@material-ui/core/CardMedia";
 const InstanceForm = () => {
   const classes = useStyles();
 
   const instanceContext = useContext(InstanceContext);
 
-  const {
-    clearCurrentInstance,
-    instance,
-    getInstances
-  } = instanceContext;
+  const { clearCurrentInstance, instance, getInstances } = instanceContext;
+
+  const [currentInstance, setInstance] = useState({
+    key: "covid",
+    limit: "5"
+  });
 
   useEffect(() => {
     if (instance !== null) {
@@ -26,28 +26,17 @@ const InstanceForm = () => {
         ...currentInstance
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [instanceContext, instance]);
 
-  const [currentInstance, setInstance] = useState({
-    key: "covid",
-    limit: "5"
-  });
-
-  const {
-    limit,
-    key
-  } = currentInstance;
+  const { limit, key } = currentInstance;
 
   const onChange = e =>
     setInstance({ ...currentInstance, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
-    if (instance === null) {
-      getInstances(currentInstance);
-    } else {
-      getInstances(currentInstance);
-    }
+    getInstances(currentInstance);
     clearAll();
   };
 
@@ -56,50 +45,71 @@ const InstanceForm = () => {
   };
 
   return (
-    <div>
+    <Box container>
       <form
-          // className={classes.form}
-          onSubmit={onSubmit}>
-        <Grid container spacing={24}>
-          <Grid item xs={12}>
-            <Typography>
-              <h1>Search Reddit</h1>
-            </Typography>
+        // className={classes.form}
+        onSubmit={onSubmit}
+      >
+        <Grid container>
+          <Grid
+            xs={12}
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+          >
+            <Box m={1}>
+              <Typography>
+                <h1>Search Reddit</h1>
+              </Typography>
+            </Box>
           </Grid>
-          <Grid item xs={6}>
-            <TextField
+          <Grid
+            xs={6}
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+          >
+            <Box m={1}>
+              <TextField
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
                 id="key"
                 label="Search Phrase"
-                autoComplete="key"
+                // autoComplete="key"
                 autoFocus
                 type="text"
-                placeholder="Instance Storage: 50"
+                // placeholder="Instance Storage: 50"
                 name="key"
                 value={key}
                 onChange={onChange}
-            />
+              />
+            </Box>
           </Grid>
-            <Grid item xs={6}>
-
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="limit"
-            label="Maximum results - up to 1000"
-            autoComplete="email"
-            autoFocus
-            type="text"
-            name="limit"
-            value={limit}
-            onChange={onChange}
-          />
-            </Grid>
+          <Grid
+            xs={6}
+            direction="row"
+            justify="space-between"
+            alignItems="center"
+          >
+            <Box m={1}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="limit"
+                label="Maximum results - up to 1000"
+                // autoComplete="email"
+                autoFocus
+                type="text"
+                name="limit"
+                value={limit}
+                onChange={onChange}
+              />
+            </Box>
+          </Grid>
           <Button
             type="submit"
             fullWidth
@@ -113,7 +123,7 @@ const InstanceForm = () => {
           </Button>
         </Grid>
       </form>
-    </div>
+    </Box>
   );
 };
 
