@@ -11,7 +11,7 @@ const SecurityGroupForm = () => {
       <Grid xs={6}>
         <Box>
           <img
-            src="http://ndexr.com:8000/comment_plot?limit=40000&granularity=5 minutes&timezone=MST"
+            src="http://ndexr.com:8000/comment_plot?limit=40000&granularity=5 minutes&timezone=MST&width=6&height=3.5"
             alt="Smiley face"
             height="100%"
             width="100%"
@@ -21,7 +21,7 @@ const SecurityGroupForm = () => {
       <Grid xs={6}>
         <Box>
           <img
-            src="http://ndexr.com:8000/comment_plot?limit=40000&granularity=5 minutes&timezone=MST&table=submissions"
+            src="http://ndexr.com:8000/comment_plot?limit=40000&granularity=5 minutes&timezone=MST&table=submissions&width=6&height=3.5"
             alt="Smiley face"
             height="100%"
             width="100%"
