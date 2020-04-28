@@ -11,9 +11,10 @@ const CreateInstance = () => {
   return (
     <div>
       <Navbar />
-      <Grid item xs={12} sm={12} md={12}
+      <Grid
+          item xs={12} sm={12} md={12}
         justify="center"
-        container
+          container
         component="main"
         className={classes.root}
       >

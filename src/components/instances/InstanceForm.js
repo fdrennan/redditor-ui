@@ -3,12 +3,14 @@ import InstanceContext from "../../context/instance/instanceContext";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 import useStyles from "../../Theme";
 import Grid from "@material-ui/core/Grid";
 const InstanceForm = () => {
   const classes = useStyles();
+
   const instanceContext = useContext(InstanceContext);
-  // test
+
   const {
     clearCurrentInstance,
     instance,
@@ -53,29 +55,35 @@ const InstanceForm = () => {
   };
 
   return (
-    <Grid  m={0} p={2} border={1} borderRadius={0}>
+    <div>
       <form
-          className={classes.form}
+          // className={classes.form}
           onSubmit={onSubmit}>
-        <div>
-          <Typography>
-            <h1>Search Reddit</h1>
-          </Typography>
-          <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="key"
-              label="Search Phrase"
-              autoComplete="key"
-              autoFocus
-              type="text"
-              placeholder="Instance Storage: 50"
-              name="key"
-              value={key}
-              onChange={onChange}
-          />
+        <Grid container spacing={24}>
+          <Grid item xs={12}>
+            <Typography>
+              <h1>Search Reddit</h1>
+            </Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="key"
+                label="Search Phrase"
+                autoComplete="key"
+                autoFocus
+                type="text"
+                placeholder="Instance Storage: 50"
+                name="key"
+                value={key}
+                onChange={onChange}
+            />
+          </Grid>
+            <Grid item xs={6}>
+
           <TextField
             variant="outlined"
             margin="normal"
@@ -90,7 +98,7 @@ const InstanceForm = () => {
             value={limit}
             onChange={onChange}
           />
-
+            </Grid>
           <Button
             type="submit"
             fullWidth
@@ -102,10 +110,9 @@ const InstanceForm = () => {
           >
             Run Query
           </Button>
-        </div>
-
+        </Grid>
       </form>
-    </Grid>
+    </div>
   );
 };
 
