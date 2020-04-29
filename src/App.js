@@ -23,7 +23,7 @@ const App = () => {
           <InstanceState>
             <AlertState>
               <Router>
-                <div className="container">
+                <div>
                   <Alerts />
                   <Switch>
                     <Route exact path="/" component={CreateInstance} />

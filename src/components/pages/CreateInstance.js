@@ -19,7 +19,7 @@ const CreateInstance = () => {
         justify="center"
         container
         component="main"
-        className={classes.root}
+        // className={classes.root}
       >
         <InstanceForm />
         <Instance />

@@ -44,7 +44,8 @@ const Instance = () => {
             } = data;
             return (
               <Grid
-                xs={6}
+                xs={12}
+                sm={6}
                 direction="row"
                 justify="space-between"
                 alignItems="flex-start"
@@ -56,7 +57,7 @@ const Instance = () => {
                     justify="space-between"
                     alignItems="flex-start"
                   >
-                    <Box>
+                    <Box m={1}>
                       <strong>Author:</strong>{" "}
                       <a
                         href={`http://reddit.com/u/${author}`}

@@ -8,20 +8,20 @@ const SecurityGroupForm = () => {
 
   return (
     <Grid justify="center" container component="main" className={classes.root}>
-      <Grid xs={6}>
+      <Grid xs={12} sm={6}>
         <Box>
           <img
-            src="http://ndexr.com:8000/comment_plot?limit=40000&granularity=5 minutes&timezone=MST&width=6&height=3.5"
+            src="http://ndexr.com/api/comment_plot?limit=20000&granularity=5 minutes&timezone=MST&width=6&height=3.5"
             alt="Smiley face"
             height="100%"
             width="100%"
           />
         </Box>
       </Grid>
-      <Grid xs={6}>
+      <Grid xs={12} sm={6}>
         <Box>
           <img
-            src="http://ndexr.com:8000/comment_plot?limit=40000&granularity=5 minutes&timezone=MST&table=submissions&width=6&height=3.5"
+            src="http://ndexr.com/api/comment_plot?limit=20000&granularity=5 minutes&timezone=MST&table=submissions&width=6&height=3.5"
             alt="Smiley face"
             height="100%"
             width="100%"

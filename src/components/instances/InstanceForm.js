@@ -45,7 +45,7 @@ const InstanceForm = () => {
   };
 
   return (
-    <Box container>
+    <Box container p={1}>
       <form
         // className={classes.form}
         onSubmit={onSubmit}
@@ -57,7 +57,7 @@ const InstanceForm = () => {
             justify="space-between"
             alignItems="center"
           >
-            <Box m={1}>
+            <Box p={1}>
               <Typography>
                 <h1>Search Reddit</h1>
               </Typography>
@@ -69,7 +69,7 @@ const InstanceForm = () => {
             justify="space-between"
             alignItems="center"
           >
-            <Box m={1}>
+            <Box p={0.5}>
               <TextField
                 variant="outlined"
                 margin="normal"
@@ -93,7 +93,7 @@ const InstanceForm = () => {
             justify="space-between"
             alignItems="center"
           >
-            <Box m={1}>
+            <Box p={0.5}>
               <TextField
                 variant="outlined"
                 margin="normal"

@@ -15,8 +15,8 @@ import {
 } from "../types";
 
 // BASE AMI: ami-0f75bb5fd5fa9f972
-const R_HOST = "http://ndexr.com";
-const R_PORT = 8000;
+const R_HOST = "http://ndexr.com/";
+const R_PORT = "api";
 const InstanceState = props => {
   const initialState = {
     key: null,
@@ -41,7 +41,7 @@ const InstanceState = props => {
     });
 
     try {
-      const res = await axios.get(`${R_HOST}:${R_PORT}/find_posts`, {
+      const res = await axios.get(`http://ndexr.com/api/find_posts`, {
         headers: {
           "Content-Type": "application/json"
         },
@@ -69,7 +69,7 @@ const InstanceState = props => {
     try {
       const { key, limit } = instance;
       console.log(`${R_HOST}:${R_PORT}/create_instance`);
-      await axios.get(`${R_HOST}:${R_PORT}/find_posts`, {
+      await axios.get(`http://ndexr.com/api/find_posts`, {
         headers: {
           "Content-Type": "application/json"
         },
